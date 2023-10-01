@@ -1,0 +1,22 @@
+<h1>プロフィール登録画面</h1>
+<%= form_with model: @profile, url: profiles_path, local: true do |f| %>
+  <div class="row m-5">
+    <div class="mb-3"><%= f.label :image %></div>
+    <%= f.file_field :image %>
+    <div class=" mb-3"><%= f.label :name %></div>
+    <%= f.text_field :name %>
+    <%= label_tag :age, "年齢" %>
+    <%= select_tag "profile[age]", options_for_select((18..85).to_a, @profile.age), prompt: "選択してください" %>
+
+    <%= label_tag :gender, "性別" %>
+    <%= select_tag "profile[gender]", options_for_select(["男性", "女性"], @profile.gender), prompt: "選択してください" %>
+
+    <div class=" mb-3"><%= f.label :profession %></div>
+    <%= f.text_field :profession %>
+    <div class=" mb-3 mt-5"><%= f.label :self_introduction %></div>
+    <%= f.text_area :self_introduction %>
+  </div>
+  <div class="mt-4 text-end">
+    <%= f.submit %>
+  </div>
+<% end %>
