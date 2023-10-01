@@ -1,2 +1,14 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<h1>プロフィール詳細</h1>
+
+<% if @profile.image.attached? %>
+  <%= image_tag @profile.image, alt: "選択した画像", class: "img-fluid rounded-circle ms-4 mt-3", style: "object-fit: cover;" %>
+<% else %>
+  <%= image_tag "no-image.jpg", alt: "デフォルトの画像", class: "img-fluid rounded-circle ms-4 mt-3", style: "object-fit: cover;" %>
+<% end %>
+
+<%= @profile.name %>
+<%= @profile.age %>
+<%= @profile.gender %>
+<%= @profile.self_introduction %>
+
+

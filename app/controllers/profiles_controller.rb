@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   def show
+    @profile = Profile.find(params[:id])
   end
 
   def new
@@ -9,7 +10,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     if @profile.save
-      redirect_to root_path
+      redirect_to profile_path(@profile)
     else
       render :new
     end
@@ -23,6 +24,6 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:name, :profession, :age, :gender, :self_introduction)
+      params.require(:profile).permit(:name, :profession, :age, :gender, :self_introduction, :image)
     end
 end
